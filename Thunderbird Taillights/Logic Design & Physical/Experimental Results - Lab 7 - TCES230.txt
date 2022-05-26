@@ -1,0 +1,48 @@
+Experimental Results
+
+As extra credit, an optional physical build of the circuit could be done. 
+This option required a few adjustments to the previous Logisim design. 
+While using the tools in Logisim to automatically create a working circuit based off expressions is useful, 
+these tools don’t offer the simplest representation of the circuit. 
+Revisiting the next state expressions from Figure 3 and the output expression from Figure 2, 
+repeating groupings of variables can be seen. For example, the expression Hxyz (Revise) 
+appears in all three next state expressions. This can be utilized in a physical circuit by 
+not requiring three of the same gate to be built. This kind of simplification drastically 
+reduces the number of chips required to build the circuit physically. The results of this 
+process across the next state and output expressions can be seen in Figure 6.
+
+Figure 6
+
+With these simplifications in mind, the previous Logisim design from Figure 5 
+needed to be adjusted. By using gates that already exist to reduce the complexity 
+of the next state and output logic, the following circuit in Figure 7 is verified to 
+work properly.
+
+Figure 7
+
+This redesign was used as the backbone for the physical design of the circuit. 
+Reusing preexisting gates reduces the number of gates required, which makes the 
+breadboard used to create the circuit less crowded. Looking at the Logisim design, 
+the circuit requires 3 4-input AND gates, 6 2-input AND gates, 3 4-input OR gates, 
+1 2-input XOR gate, and 1 inverter. These gates correspond to the following IC chips: 
+2 Double 4-input AND chips (SN74HC21N), 2 Quad 2-input AND chips (SN74HC08N), 2 Double 
+4-input OR chips (CD4072BE), and an Inverter chip (SN74HC04N). 
+The absence of a XOR chip is due to coincidence of the IC chips used for this design: 
+there is 2 unused AND gates on one of the 2-input AND chips, and 1 unused OR gate on 
+one of the 4-input OR chips. The design of a XOR gate is of two 2-input AND gates 
+going into one 2-input OR gate, so instead of using a XOR chip, the unused gates in 
+the other chips can be utilized as an XOR to reduce the number of chips needed. (For the 
+4-input OR gate to work with only 2 variable inputs, the other two inputs had to be set to 
+0, or low. The 4-input OR gate would then function as a 2-input OR gate.) An up to 
+date Logisim diagram was then created, confirmed to work properly, and is shown in Figure 8.
+
+Figure 8
+
+The process of creating the circuit was mind-numbing, as many parts of the 
+circuit had to be tracked at one time. There were enough wires tightly crowded 
+together to create leaks from one wire to others, creating a “lock-up” in the 
+circuit. This was fixed quickly by pushing the wires around to move them and 
+hopefully stop the leaking. The design was big enough where the inputs, next 
+state logic, and memory where placed on one breadboard and the output logic was 
+placed on another one. This was to reduce the density of the first breadboard, 
+which quickly became overcrowded with all the chips and wires everywhere.
